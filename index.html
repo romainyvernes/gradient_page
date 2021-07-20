@@ -36,7 +36,11 @@
               <li><a href="#">Support</a></li>
             </ul>
             <div class="search-container">
-              <input type="search">
+              <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="search" required>
+                <i class="fas fa-times-circle"></i>
+              </div>
             </div>
           </nav>
         </header>
@@ -58,33 +62,41 @@
       </section>
       <section class="secondary-section">
         <ul>
-          <li><a href="#"></a></li>
-          <li><a href="#"></a></li>
-          <li><a href="#"></a></li>
-          <li><a href="#"></a></li>
+          <li><a href="#" class="background-link"></a></li>
+          <li><a href="#" class="background-link"></a></li>
+          <li><a href="#" class="background-link"></a></li>
+          <li><a href="#" class="background-link"></a></li>
         </ul>
       </section>
     </main>
     
     <footer class="primary-footer">
-      <p>
-        Shop the <a href="#">Apple Online Store</a> (1-800-MY-APPLE), visit an 
-        <a href="#">Apple Retail Store</a>, or find a <a href="#">reseller</a>.
-      </p>
-      <ul class="nav-links">
-        <li><a href="#">Site Map</a> |</li>
-        <li> <a href="#">Hot News</a> |</li>
-        <li> <a href="#">RSS Feeds</a> |</li>
-        <li> <a href="#">Media Info</a> |</li>
-        <li> <a href="#">Environment</a> |</li>
-        <li> <a href="#">Job Opportunities</a> |</li>
-        <li> <a href="#">Contact Us</a> |</li>
-        <li></li>
-      </ul>
-      <p>
-        Copyright &copy; 2014 Apple Inc. All rights reserved. <a href="#">Terms 
-        of Use</a> | <a href="#">Privacy Policy</a>
-      </p>
+      <div class="container">
+        <p>
+          Shop the <a href="#">Apple Online Store</a> (1-800-MY-APPLE), visit an 
+          <a href="#">Apple Retail Store</a>, or find a <a href="#">reseller</a>.
+        </p>
+        <ul class="nav-links">
+          <li><a href="#">Site Map</a><span>|</span></li>
+          <li><a href="#">Hot News</a><span>|</span></li>
+          <li><a href="#">RSS Feeds</a><span>|</span></li>
+          <li><a href="#">Media Info</a><span>|</span></li>
+          <li><a href="#">Environment</a><span>|</span></li>
+          <li><a href="#">Job Opportunities</a><span>|</span></li>
+          <li><a href="#">Contact Us</a><span>|</span></li>
+          <li>
+            <a href="#">
+              <img src="assets/logos/usa_flag.png" 
+                 alt="Country flag" 
+                 class="country-flag">
+            </a>
+          </li>
+        </ul>
+        <p>
+          Copyright &copy; 2014 Apple Inc. All rights reserved. <a href="#">Terms 
+          of Use</a> | <a href="#">Privacy Policy</a>
+        </p>
+      </div>
     </footer>
   </body>
 </html>

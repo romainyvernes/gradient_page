@@ -63,8 +63,7 @@ a {
 
 /* set container's minimum and maximum width to keep images from both sections
 aligned, and center content */
-main,
-.primary-footer {
+main {
 	min-width: 1000px;
 	max-width: 1440px;
 	margin: 0 auto;
@@ -76,6 +75,19 @@ main,
 
 .nav-links {
 	display: flex;
+}
+
+/*
+	Background links
+*/
+
+/* enlarge link to cover container to make the entire section clickable */
+.background-link {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 /* 
@@ -91,23 +103,13 @@ main,
 	overflow: hidden;
 }
 
-/* enlarge link to cover container to make the entire section clickable */
-.primary-section .background-link {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
-
 .primary-section header {
 	margin-top: 5em;
 }
 
 /* navbar at the top of the page */
 main nav {
-	display: inline-flex;
-	justify-content: center;
+	display: flex;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 	/* first and second gradient layers set borders, third layer sets background */
 	background:
@@ -118,6 +120,7 @@ main nav {
 	margin: 0 auto;
 	font-size: 0.75em;
 	height: 35px;
+	width: 980px;
 	/* allows to use z-index to place navbar on top of background link */
 	position: relative;
 	z-index: 2;
@@ -127,18 +130,33 @@ main nav a {
 	color: inherit;
 }
 
-/* set links in navbar to same width, and enlarge their content for links to be
-clickable anywhere inside the li elements */
-main .nav-links li {
-	width: 8.5em;
-	display: flex;
-	align-items: stretch;
-	line-height: 35px;
+main .nav-links {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
 }
 
+/* set links in navbar to same width, and enlarge their height for links to be
+clickable anywhere inside the li elements */
+main .nav-links li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* on hover, change background to gradient that starts in center as transparent
+black and changes a lighter shade of transparent black towards all corners of
+the container */
+main .nav-links li:hover {
+	background: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1));
+}
+
+/* enlarge links' width, and apply vertical shadow to text */
 main .nav-links a {
-	flex: 1;
 	text-shadow: 0 -1px #000;
+	width: 100%;
+	height: 100%;
+	line-height: 35px;
 }
 
 /* use gradient to set left and right borders */
@@ -147,28 +165,105 @@ main .nav-links li,
 	background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgb(134, 134, 134) 1%, rgba(0, 0, 0, 0) 1.5%, rgba(0, 0, 0, 0) 98.5%, rgb(134, 134, 134) 99%, rgba(0, 0, 0, 0.4));
 }
 
-/* set gradient for first navbar link that doesn't include a left border */
+/* set gradient for first navbar link so it doesn't include a left border */
 main .nav-links .apple-link {
 	background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 98.5%, rgb(134, 134, 134) 99%, rgba(0, 0, 0, 0.4));
 }
 
-/* set gradient for last navbar item that doesn't include a right border */
-.search-container {
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgb(134, 134, 134) 1%, rgba(0, 0, 0, 0) 1.5%, rgba(0, 0, 0, 0));
-	padding: 0.5em 1.1em;
+.apple-link a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.search-container input {
-	width: 100px;
-	border-radius: 25px;
-	background: transparent;
-	margin: auto 0;
-}
-
+/* apple icon in navbar */
 .apple-link img {
 	height: 20px;
-	margin: 5px 0;
+	/* apply vertical shadow to icon */
 	filter: drop-shadow(0 -1px #000);
+}
+
+/* set gradient for last navbar item so it doesn't include a right border */
+.search-container {
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgb(134, 134, 134) 1%, rgba(0, 0, 0, 0) 1.5%, rgba(0, 0, 0, 0));
+	padding: 0 1.1em;
+	width: 15%;
+	display: flex;
+	align-items: center;
+	transition: width 0.3s;
+}
+
+/* widen search bar when focused */
+.search-container:focus-within {
+	width: 25%;
+}
+
+/* search bar in navbar */
+.search-bar {
+	height: 21px;
+	width: 100%;
+	border-radius: 25px;
+	display: flex;
+	align-items: center;
+	padding: 0.15em 0.4em 0.1em 0.6em;
+	box-shadow: 
+			inset 0 1px 2px 0.5px rgba(0, 0, 0, 0.6), 
+			inset 0 -1px rgba(255, 255, 255, 0.3);
+}
+
+/* magnifying glass icon next to search input */
+.search-bar .fa-search {
+	text-shadow: 0 1px #000;
+}
+
+/* "x" icon next to search input */
+.search-bar .fa-times-circle {
+	color: #bbb;
+	font-size: 0.9em;
+	cursor: pointer;
+	/* hide by default */
+	visibility: hidden;
+}
+
+.search-bar input {
+	background: transparent;
+	outline: none;
+	width: 100%;
+	border: none;
+	margin-left: 0.1em;
+	color: inherit;
+	font-size: inherit;
+}
+
+/* display "x" icon in search bar when search bar is focused */
+.search-bar input:focus + .fa-times-circle {
+	visibility: visible;
+}
+
+/* hide "x" icon when no text is entered in search input */
+.search-bar input:invalid + .fa-times-circle {
+	visibility: hidden;
+}
+
+/* remove default "x" that appears when text is entered inside input element */
+input[type="search"]::-webkit-search-cancel-button {
+	display: none;
+}
+
+/* applies when input element inside search bar is focused */
+.search-bar:focus-within {
+	background-color: #fff;
+	color: #000;
+	box-shadow: 
+			inset 0 1px 1px 1px rgb(92, 92, 92), 
+			inset 0 -0.5px 0 0.5px rgb(124, 124, 124);
+}
+
+/* change magnifying glass icon styling when search input is focused */
+.search-bar:focus-within .fa-search {
+	text-shadow: none;
+	color: #707070;
+	margin-top: 0.2em;
 }
 
 /* area within primary section that encompasses all text elements */
@@ -209,6 +304,7 @@ main .nav-links .apple-link {
 	color: inherit;
 }
 
+/* add underline effect to text on hover */
 .main-text .text:hover {
 	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
@@ -222,6 +318,12 @@ main .nav-links .apple-link {
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(4, minmax(250px, 1fr));
+}
+
+/* allows links within list elements to take up their entire container relative
+to each of their respective containers */
+.secondary-section li {
+	position: relative;
 }
 
 /* add image background to every element inside smaller section */
@@ -241,8 +343,40 @@ main .nav-links .apple-link {
 	background: url("assets/images/promo_supplier_responsibility.jpeg") center no-repeat;
 }
 
+/*
+	Page footer
+*/
+
 .primary-footer {
-	text-align: center;
-	margin: 2em;
-	font-size: 0.7em;
+	color: #8d8d8d;
+	padding: 2em 0 2.5em 1.2em;
+	font-size: 0.65em;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+/* set default text color for all links within footer */
+.primary-footer a {
+	color: #2aa2d3;
+}
+
+/* display underline effect on footer links when hovered */
+.primary-footer a:hover {
+	text-decoration: underline;
+}
+
+.primary-footer .container {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1.5em 1.5em;
+}
+
+/* applies spacing on both sides of vertical bars separating links in footer */
+.primary-footer span {
+	margin: 0 0.5em;
+}
+
+.primary-footer .nav-links {
+	align-items: center;
 }
