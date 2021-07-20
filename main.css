@@ -46,3 +46,203 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+/* set default font */
+body {
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* remove underline for links */
+a {
+	text-decoration: none;
+}
+
+/* set container's minimum and maximum width to keep images from both sections
+aligned, and center content */
+main,
+.primary-footer {
+	min-width: 1000px;
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+/*
+	Navigation menus
+*/
+
+.nav-links {
+	display: flex;
+}
+
+/* 
+	Main section with navbar and largest image 
+*/
+
+.primary-section {
+	position: relative;
+	text-align: center;
+	height: 538px;
+	background: url("assets/images/your_verse_hero.jpeg") bottom no-repeat;
+	color: #fff;
+	overflow: hidden;
+}
+
+/* enlarge link to cover container to make the entire section clickable */
+.primary-section .background-link {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.primary-section header {
+	margin-top: 5em;
+}
+
+/* navbar at the top of the page */
+main nav {
+	display: inline-flex;
+	justify-content: center;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	/* first and second gradient layers set borders, third layer sets background */
+	background:
+			linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, 0) 97%, rgba(0, 0, 0, 0.45)),
+			linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 0.2%, rgba(0, 0, 0, 0) 99.8%, rgba(0, 0, 0, 0.2)),
+			linear-gradient(to top, #666, #5e5e5e 50%, #707070 51%, #808080);
+	border-radius: 3px;
+	margin: 0 auto;
+	font-size: 0.75em;
+	height: 35px;
+	/* allows to use z-index to place navbar on top of background link */
+	position: relative;
+	z-index: 2;
+}
+
+main nav a {
+	color: inherit;
+}
+
+/* set links in navbar to same width, and enlarge their content for links to be
+clickable anywhere inside the li elements */
+main .nav-links li {
+	width: 8.5em;
+	display: flex;
+	align-items: stretch;
+	line-height: 35px;
+}
+
+main .nav-links a {
+	flex: 1;
+	text-shadow: 0 -1px #000;
+}
+
+/* use gradient to set left and right borders */
+main .nav-links li,
+.search-container {
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgb(134, 134, 134) 1%, rgba(0, 0, 0, 0) 1.5%, rgba(0, 0, 0, 0) 98.5%, rgb(134, 134, 134) 99%, rgba(0, 0, 0, 0.4));
+}
+
+/* set gradient for first navbar link that doesn't include a left border */
+main .nav-links .apple-link {
+	background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 98.5%, rgb(134, 134, 134) 99%, rgba(0, 0, 0, 0.4));
+}
+
+/* set gradient for last navbar item that doesn't include a right border */
+.search-container {
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgb(134, 134, 134) 1%, rgba(0, 0, 0, 0) 1.5%, rgba(0, 0, 0, 0));
+	padding: 0.5em 1.1em;
+}
+
+.search-container input {
+	width: 100px;
+	border-radius: 25px;
+	background: transparent;
+	margin: auto 0;
+}
+
+.apple-link img {
+	height: 20px;
+	margin: 5px 0;
+	filter: drop-shadow(0 -1px #000);
+}
+
+/* area within primary section that encompasses all text elements */
+.main-text {
+	width: 800px;
+	margin: 3em auto;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.main-text h1 {
+	font-size: 4.3em;
+	margin-bottom: 0.3em;
+}
+
+.main-text h2 {
+	font-size: 2em;
+	line-height: 1.3em;
+	margin-bottom: 0.9em;
+}
+
+/* add circle around play icon */
+.play-icon {
+	border: 1.5px solid #fff;
+	border-radius: 50%;
+	margin-left: 0.4em;
+	vertical-align: bottom;
+}
+
+.main-text p {
+	display: inline-flex;
+	margin: 0 1em;
+	position: relative;
+	z-index: 2;
+	font-size: 1.6em;
+}
+
+.main-text a {
+	color: inherit;
+}
+
+.main-text .text:hover {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* 
+	Smaller section with row of images 
+*/
+
+.secondary-section ul {
+	height: 200px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(250px, 1fr));
+}
+
+/* add image background to every element inside smaller section */
+.secondary-section li:first-child {
+	background: url("assets/images/promo_iphone5s.jpeg") center no-repeat;
+}
+
+.secondary-section li:nth-child(2) {
+	background: url("assets/images/promo_iphone5c.jpeg") center no-repeat;
+}
+
+.secondary-section li:nth-child(3) {
+	background: url("assets/images/promo_30_years.jpeg") center no-repeat;
+}
+
+.secondary-section li:nth-child(4) {
+	background: url("assets/images/promo_supplier_responsibility.jpeg") center no-repeat;
+}
+
+.primary-footer {
+	text-align: center;
+	margin: 2em;
+	font-size: 0.7em;
+}
