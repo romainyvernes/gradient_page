@@ -1,4 +1,4 @@
-## Responsive Design
+## Gradient Page
 ### Description
 Clone of an existing web page aimed at demonstrating command of vanilla CSS, and more specifically color gradients, to recreate identical visual effects.
 ### About
